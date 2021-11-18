@@ -210,7 +210,7 @@ MurielsPriorStop = function(data,prior = 'divided'){
 }
 }
 
-#HELPER FUNCTION FOR CALCULATION # FROM https://stackoverflow.com/questions/57785222/avoiding-overflow-in-logcoshx
+#HELPER FUNCTION FOR CALCULATION [1]
 logcosh = function(x){
   s = sign(x) * x
   p = exp(-2 * s)
@@ -233,7 +233,7 @@ rlogalt = function(n, delta = 0){
 }
 }
 
-# EFRON-DE LA PEÑA E-VALUE FUNCTIONS
+# EFRON-DE LA PEÃ‘A E-VALUE FUNCTIONS
 {
 Ecorr= function(lambda,z){
   if(z>=0){
@@ -282,7 +282,7 @@ WEram = function(lambda,z,W = 0){
 
 }
 
-# EFRON-DE LA PEÑA EXPERIMENT FUNCTIONS WITH OPTIONAL STOPPING
+# EFRON-DE LA PEÃ‘A EXPERIMENT FUNCTIONS WITH OPTIONAL STOPPING
 {
 Efronspowertest = function(z, prior = 'unif',shapeinvg = 1,rate = 1,cascale = 1,grid = 'sup'){
   lgrid = seq(0.1,100,0.1)
@@ -754,7 +754,7 @@ Ebernoulli = function(z){
 }
 }
 
-# EFRON-DE LA PEÑA EXPERIMENT FUNCTIONS WITHOUT OPTIONAL STOPPING FOR EXPERIMENT, CALLED LOG BECAUSE THEY ARE TO BE PLOTTED ON LOGARITHMIC SCALE
+# EFRON-DE LA PEÃ‘A EXPERIMENT FUNCTIONS WITHOUT OPTIONAL STOPPING FOR EXPERIMENT, CALLED LOG BECAUSE THEY ARE TO BE PLOTTED ON LOGARITHMIC SCALE
 {
 Efronspowertestexplog = function(z, prior = 'unif',shapeinvg = 1,rate = 1,cascale = 1,grid = 'exp', type = 'CorrectedE',twosided = FALSE){
   evalgrid = seq(0.1,100,0.1)
@@ -1675,7 +1675,7 @@ lines(seq(-8,8,0.01), sapply(seq(-8,8,0.01), function(z){
   }
 }),type = 'l',lwd = 2,ylim = c(0,2),ylab ='E_corr',xlab = 'z_i', main = 'E_corr(lambda = 1)',col = 'blue')
 
-legend(-8,2,c('E_Peña','E_Ram','E_Corr','E_Cosh'), text.col = c('black','red', 'green', 'blue'))
+legend(-8,2,c('E_PeÃ±a','E_Ram','E_Corr','E_Cosh'), text.col = c('black','red', 'green', 'blue'))
 max(Epena(1,seq(-5,5,0.01)))
 }
 
@@ -1714,7 +1714,7 @@ for(b in 1:B){
   lines(rowSums(log(GrunwaldCorr)/B),col = 'red', lwd = 2)
   lines(rowSums(log(GrunwaldEfron)/B),col = 'green', lwd = 2)
   EfronBadNormGrun = recordPlot()
-  legend(0,15,c('Gr.E_Peña','Gr.E_Ram','Gr.E_Corr','Gr.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
+  legend(0,15,c('Gr.E_PeÃ±a','Gr.E_Ram','Gr.E_Corr','Gr.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
 }
 #with Ram method
 {
@@ -1747,7 +1747,7 @@ for(b in 1:B){
   lines(rowSums(log(RamdasCorr)/B),col = 'red', lwd = 2)
   lines(rowSums(log(RamdasEfron)/B),col = 'green', lwd = 2)
   EfronbadNormRam = recordPlot()
-  legend(0,14,c('Ram.E_Peña','Ram.E_Ram','Ram.E_Corr','Ram.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
+  legend(0,14,c('Ram.E_PeÃ±a','Ram.E_Ram','Ram.E_Corr','Ram.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
 }
 }
 
@@ -1783,7 +1783,7 @@ for(b in 1:B){
     lines(rowSums(log(GrunwaldCorr)/B),col = 'red', lwd = 2)
     lines(rowSums(log(GrunwaldEfron)/B),col = 'green', lwd = 2)
     EfronbadCauchyGrun = recordPlot()
-    legend(0,15,c('Gr.E_Peña','Gr.-E_Ram','Gr.E_Corr','Gr.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
+    legend(0,15,c('Gr.E_PeÃ±a','Gr.-E_Ram','Gr.E_Corr','Gr.E_Cosh'),text.col = c('green','blue','red','black'),text.width = 12)
   }
 }
 
@@ -3666,3 +3666,4 @@ for(b in 1:B){
   FinalGrowthLogAlt = recordPlot()
 }
 
+# [1] from https://stackoverflow.com/questions/57785222/avoiding-overflow-in-logcoshx
